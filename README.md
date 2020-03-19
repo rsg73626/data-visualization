@@ -2,7 +2,7 @@
 
 This repo is used to keep the practical exercicies made during the course of the subject Data Visualization of my Master Degree course in Computing. It consists in some applications to generate different kinds of charts. 
 
-This project uses the [D3.j](https://d3js.org)s libraries to build the charts.
+This project uses the [D3.js](https://d3js.org) libraries to build the charts.
 
 ## Histogram
 
@@ -29,9 +29,9 @@ To use the library, follow the steps bellow:
 2. Add your CSV file the project folder.
 3. Open the index.html in your browser.
 4. Enter with the data necessary to generate the link.
-  - The path to your CSV file.
-  - The position of the column that contains the values to generate the chart (it starts in 0).
-  - The width and the height.
-  - Press "Generate".
+    - The path to your CSV file.
+    - The position of the column that contains the values to generate the chart (it starts in 0).
+    - The width and the height.
+    - Press "Generate".
 
 
