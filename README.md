@@ -6,8 +6,8 @@ This project uses the [D3.js](https://d3js.org) libraries to build the charts.
 
 ## Histogram
 
-![](readme-images/histogram1)
-![](readme-images/histogram2)
+![](./readme-images/histogram1)
+![](./readme-images/histogram2)
 
 ### What is an histogram? 
 
