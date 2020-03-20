@@ -5,6 +5,8 @@ function drawVerticalBarChart(chartAreaWidth, chartAreaHeight, chartData, chartX
 
     var barWidth = 0
 
+    var heightPerUnit = 0
+
     var svg = d3.select('body')
                     .append('svg')
                         .attr('width', chartAreaWidth)
@@ -30,13 +32,13 @@ function drawVerticalBarChart(chartAreaWidth, chartAreaHeight, chartData, chartX
         var y_axis = d3.axisLeft().scale(yscale)
 
         svg.append('g')
-                .attr('id', 'graph-y-axix')
+                .classed('graph-y-axix', true)
                 .attr('transform', 'translate(' + margin + ', ' + margin + ')')
                 .call(y_axis)
         
         var xAxisTranslate = chartAreaHeight - margin
         svg.append('g')
-                .attr('id', 'graph-x-axix')
+                .classed('graph-x-axix', true)
                 .attr('transform', 'translate(' + margin + ', ' + xAxisTranslate + ')')
                 .call(x_axis)
 
@@ -55,7 +57,7 @@ function drawVerticalBarChart(chartAreaWidth, chartAreaHeight, chartData, chartX
         var availableSpacePerBar = availableWidth / chartData.length
         barWidth = availableSpacePerBar * 0.9
 
-        var heightPerUnit = availableHeight / d3.max(chartData)
+        heightPerUnit = availableHeight / d3.max(chartData)
 
         var bar = svg.selectAll('g') 
                     .data(chartData)
@@ -89,7 +91,7 @@ function drawVerticalBarChart(chartAreaWidth, chartAreaHeight, chartData, chartX
                 .attr('fill', 'gray')
 
         bar.append('text')
-                .attr('id', 'graph-text-value')
+                .classed('graph-text-value', true)
                 .text(
                     function(d) { 
                         return d 
@@ -113,10 +115,19 @@ function drawVerticalBarChart(chartAreaWidth, chartAreaHeight, chartData, chartX
     drawChart()
     drawAxix()
 
-    d3.selectAll('#graph-x-axix .tick text')
+    // changing the value text to vertical
+    d3.selectAll('.graph-text-value')
+                .attr('transform', d3Transform().rotate(-90))
+                .attr('x', function(d) { return (d * heightPerUnit) - chartAreaHeight + (margin * 2) } )
+                .attr('y', barWidth * (barWidth <= 40 ? 1 : 0.75))
+                .classed('graph-text-value', false)
+
+    // changing the x axis text to vertical
+    d3.selectAll('.graph-x-axix .tick text')
                 .attr('transform', d3Transform().rotate(-90))
                 .attr('x', -25)
                 .attr('y', -3)
+                .attr('graph-x-axix', false)
 
 }
 
@@ -125,6 +136,7 @@ function drawHistogramChart(chartAreaWidth, chartAreaHeight, chartData) {
         console.error('ERROR: Invalid chart data. It has to be an array with numerical values.')
         d3.select('body')
                     .append('h3')
+                        .classed('error', true)
                         .text('ERROR: Invalid chart data. It has to be an array with numerical values.')
                         .style('margin', '0')
                         .style('padding', '0')
@@ -168,6 +180,7 @@ function drawHistogramChartFromCSV(filePath, columnPosition, chartAreaWidth, cha
         console.error('ERROR: Invalid file path.')
         d3.select('body')
                     .append('h3')
+                        .classed('error', true)
                         .text('ERROR: Invalid file path.')
                         .style('margin', '0')
                         .style('padding', '0')
@@ -180,6 +193,7 @@ function drawHistogramChartFromCSV(filePath, columnPosition, chartAreaWidth, cha
         console.error('ERROR: Invalid column position.')
         d3.select('body')
                     .append('h3')
+                        .classed('error', true)
                         .text('ERROR: Invalid column position.')
                         .style('margin', '0')
                         .style('padding', '0')
@@ -196,9 +210,10 @@ function drawHistogramChartFromCSV(filePath, columnPosition, chartAreaWidth, cha
         var keys = d3.keys(objc)
 
         if (c >= keys.length) {
-            console.error('ERROR: invalid ' + c + ' value for data set ' + filePath + ' with ' + keys.length + 'columns.')
+            console.error('ERROR: invalid ' + c + ' value for data set ' + filePath + ' with ' + keys.length + ' columns.')
             d3.select('body')
                     .append('h3')
+                        .classed('error', true)
                         .text('ERROR: invalid ' + c + ' value for data set ' + filePath + ' with ' + keys.length + 'columns.')
                         .style('margin', '0')
                         .style('padding', '0')
@@ -230,6 +245,7 @@ function drawHistogramChartFromCSV(filePath, columnPosition, chartAreaWidth, cha
             console.error('ERROR: Couldn\'d read the file.')
             d3.select('body')
                     .append('h3')
+                        .classed('error', true)
                         .text('ERROR: Couldn\'d read the file.')
                         .style('margin', '0')
                         .style('padding', '0')
