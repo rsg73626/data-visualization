@@ -23,10 +23,13 @@ The histogram algorithm implemented here follows the next steps:
 
 ### How to use? 
 
+First, it's necessary to have a web server to put your files. If you do not have one, or if you do not have much expirience on it, I recomend the use of the [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb). It is a really simple to use local web server created as a Google Chrome browser extension. 
+
 To use the library, follow the steps bellow: 
 
 1. Download or clone the repo. 
 2. Add your CSV file the project folder.
+3. Start you web server pointing to the project folder.
 3. Open the index.html in your browser.
 4. Enter with the data necessary to generate the link.
     - The path to your CSV file.
