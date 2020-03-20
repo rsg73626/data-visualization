@@ -17,6 +17,8 @@
 
         <script src = "./js/script.js"></script>
 
+        <script src = "./js/histogram.js"></script>
+
         <style>
 
             * {
@@ -153,7 +155,7 @@
         <script>
 
             function generateHistogramChartButtonClick() {
-                d3.selectAll('.error').remove()
+                clearErrors()
 
                 var file = document.getElementById('file').value
                 var column = document.getElementById('column').value
