@@ -1,10 +1,5 @@
 # Data Visualization
 
-## Summary
-
-1. [Histogram](#histogram)
-2. [Stacked Bars](#stacked-bars-chart)
-
 This repo is used to keep the practical exercicies made during the course of the subject Data Visualization of my Master Degree course in Computing. It consists in some applications to generate different kinds of charts. 
 
 This project uses the [D3.js](https://d3js.org) libraries to build the charts.
@@ -18,6 +13,13 @@ To use the library, follow the steps bellow:
 3. Start your web server pointing to the project folder.
 3. Open the index.html in your browser.
 4. Select the chart type you want and follow the specific steps for chosen type in the corresponding section of this document.
+
+# Summary
+
+1. [Histogram](#histogram)
+2. [Stacked Bars](#stacked-bars-chart)
+
+
 
 ## Histogram
 
