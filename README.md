@@ -6,6 +6,8 @@ This project uses the [D3.js](https://d3js.org) libraries to build the charts.
 
 ## Histogram
 
+![Image of a histogram generated with this lib.](readme-images/histogram2.png)
+
 ### What is an histogram? 
 
 It's a kind of chart that allows us to perceive, in a visual way, the frequency distribution of a data set.
