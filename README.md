@@ -6,7 +6,7 @@ This project uses the [D3.js](https://d3js.org) libraries to build the charts.
 
 ## Histogram
 
-![Image of a histogram generated with this lib.](readme-images/histogram2.png)
+![Image of a histogram generated with this lib.](readme-images/histogram1.png)
 
 ### What is an histogram? 
 
