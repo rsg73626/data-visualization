@@ -53,7 +53,18 @@ It's a kind of chart that allows us to see the total values for different catego
 
 The histogram algorithm implemented here follows the next steps:
 
-1. Given a table in the format: ![Stacked bar chart data table exemplo.](readme-images/stackedbar_chart_example.png)
+1. Given a table in the format
+
+![Stacked bar chart data table exemplo.](readme-images/stackedbar_chart_example.png)
+
+   it is create a JSON object in the format
+
+ ```
+  { 'A': { 'Category A': 1, 'Category B': 2, 'Category C': 3, 'totalValue': 6 },
+    'B': { 'Category A': 4, 'Category B': 5, 'Category C': 6, 'totalValue': 15 },
+    'C': { 'Category A': 7, 'Category B': 8, 'Category C': 9, 'totalValue': 24 } }
+ ```  
+
 
 ### How to use? 
 
