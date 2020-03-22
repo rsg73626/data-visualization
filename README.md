@@ -4,9 +4,9 @@ This repo is used to keep the practical exercicies made during the course of the
 
 This project uses the [D3.js](https://d3js.org) libraries to build the charts.
 
-## Histogram
+To use this project it's necessary to have a web server to put your files. If you do not have one, or if you do not have much expirience on it, I recomend the use of the [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb). It is a really simple to use local web server created as a Google Chrome browser extension. 
 
-![Image of a histogram generated with this lib.](readme-images/histogram1.png)
+## Histogram
 
 ### What is an histogram? 
 
@@ -25,8 +25,6 @@ The histogram algorithm implemented here follows the next steps:
 
 ### How to use? 
 
-First, it's necessary to have a web server to put your files. If you do not have one, or if you do not have much expirience on it, I recomend the use of the [Web Server for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb). It is a really simple to use local web server created as a Google Chrome browser extension. 
-
 To use the library, follow the steps bellow: 
 
 1. Download or clone the repo. 
@@ -38,5 +36,9 @@ To use the library, follow the steps bellow:
     - The position of the column that contains the values to generate the chart (it starts in 0).
     - The width and the height.
     - Press "Generate".
+    
+#### Exemple of a histogram chart generated with the lib
+
+![Image of a histogram generated with this lib.](readme-images/histogram1.png)
 
 
