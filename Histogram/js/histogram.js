@@ -20,7 +20,7 @@ function drawVerticalBarChart(title, chartAreaWidth, chartAreaHeight, chartData,
                         .attr('width', chartAreaWidth)
                         .attr('height', chartAreaHeight)
 
-    function drawAxix() {
+    function drawAxes() {
 
         var xscale = d3.scaleLinear()
                         .domain([-0.5, chartData.length - 0.5])
@@ -31,7 +31,7 @@ function drawVerticalBarChart(title, chartAreaWidth, chartAreaHeight, chartData,
                         .range([chartAreaHeight - (2 * margin), 0])
 
         var tickValues = []
-        for (i = 0; i < chartData.length; i += 1) { tickValues[tickValues.length] = i }
+        for (i = 0; i < chartData.length; i += 1) { tickValues.push(i) }
         var x_axis = d3.axisBottom()
                         .scale(xscale)
                         .tickValues(tickValues)
@@ -121,7 +121,7 @@ function drawVerticalBarChart(title, chartAreaWidth, chartAreaHeight, chartData,
     }
 
     drawChart()
-    drawAxix()
+    drawAxes()
 
     // changing the value text to vertical
     d3.selectAll('.graph-text-value')
@@ -193,7 +193,7 @@ function drawHistogramChartFromCSV(filePath, columnPosition, chartAreaWidth, cha
     function parse(objc) {
         var keys = d3.keys(objc)
 
-        if (c >= keys.length) {
+        if (c >= keys.length || c < 0) {
             logAndAddError('Invalid ' + c + ' value for data set ' + filePath + ' with ' + keys.length + ' columns.')
         }
 

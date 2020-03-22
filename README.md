@@ -16,7 +16,7 @@ To use the library, follow the steps bellow:
 
 ## Histogram
 
-### What is an histogram? 
+### What is a histogram? 
 
 It's a kind of chart that allows us to perceive, in a visual way, the frequency distribution of a data set.
 
