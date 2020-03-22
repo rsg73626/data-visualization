@@ -64,6 +64,8 @@ The histogram algorithm implemented here follows the next steps:
     'B': { 'Category A': 4, 'Category B': 5, 'Category C': 6, 'totalValue': 15 },
     'C': { 'Category A': 7, 'Category B': 8, 'Category C': 9, 'totalValue': 24 } }
  ```  
+ 
+ 2. Using the JSON and the other settings (chart orientation and the chart type), the chart is plotted.
 
 
 ### How to use? 
