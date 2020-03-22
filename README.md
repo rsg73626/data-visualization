@@ -41,7 +41,7 @@ The histogram algorithm implemented here follows the next steps:
     
 #### Exemple of a histogram chart generated with the lib
 
-![Image of a histogram chart generated with this lib.](readme-images/histogram1.png)
+<img src="readme-images/histogram1.png" alt="Image of a histogram chart generated with this lib." width="500px" height="500px"/>
 
 ## Stacked Bar Chart
 
@@ -60,13 +60,4 @@ The histogram algorithm implemented here follows the next steps:
     
 #### Exemple of a histogram chart generated with the lib
 
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar1.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar2.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar3.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar4.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar5.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar6.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar7.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar8.png)
-
-
+<img src="readme-images/stackedbar1.png" alt="Image of a stacked bar chart generated with this lib." width="300px" height="300px"/>
