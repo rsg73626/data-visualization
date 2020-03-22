@@ -41,6 +41,32 @@ The histogram algorithm implemented here follows the next steps:
     
 #### Exemple of a histogram chart generated with the lib
 
-![Image of a histogram generated with this lib.](readme-images/histogram1.png)
+![Image of a histogram chart generated with this lib.](readme-images/histogram1.png)
+
+## Stacked Bar Chart
+
+### What is a histogram? 
+
+It's a kind of chart that allows us to see the total values for different categories, at the same time that allows us to understand how each of these values is composed. With that it's possible to separate each value of each category in sub groups.
+
+### How is it generated?
+
+The histogram algorithm implemented here follows the next steps:
+
+1. Given a table in the format: ![Stacked bar chart data table exemplo.](readme-images/stackedbar_chart_example.png)
+
+### How to use? 
+
+    
+#### Exemple of a histogram chart generated with the lib
+
+![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar1.png)
+![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar2.png)
+![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar3.png)
+![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar4.png)
+![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar5.png)
+![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar6.png)
+![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar7.png)
+![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar8.png)
 
 
