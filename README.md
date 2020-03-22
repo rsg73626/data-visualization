@@ -35,11 +35,11 @@ The histogram algorithm implemented here follows the next steps:
 
  -  Enter with the data necessary to generate the chart.
      - The path to your CSV file.
-     - The position of the column that contains the values to generate the chart (it starts in 0).
-     - The width and the height.
+     - The position of the column that contains the values to generate the chart (it starts in 0). **[ optional, default value = 0 ]**
+     - The width and the height. **[ optional, default and minimum value = 500 ]**
      - Press "Generate".
     
-#### Exemple of a histogram chart generated with the lib
+### Exemple of a histogram chart generated with the lib
 
 <img src="readme-images/histogram1.png" alt="Image of a histogram chart generated with this lib." width="500px" height="500px"/>
 
@@ -70,8 +70,15 @@ The histogram algorithm implemented here follows the next steps:
 
 ### How to use? 
 
+ -  Enter with the data necessary to generate the chart.
+     - The path to your CSV file.
+     - The chart orientation (horizontal or vertical).
+     - The chart type (commom or percentage).
+     - The width and the height. **[ optional, default and minimum value = 500 ]**
+     - A list of color values separated by `;` to fill each group that composes the columns. **[ optional, default value = gray scale ]**
+     - Press "Generate".
     
-#### Exemple of a histogram chart generated with the lib
+### Exemples of stacked bar charts generated with the lib
 
 <img src="readme-images/stackedbar1.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar2.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar3.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar4.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
 
