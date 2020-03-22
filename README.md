@@ -60,12 +60,6 @@ The histogram algorithm implemented here follows the next steps:
     
 #### Exemple of a histogram chart generated with the lib
 
-<img src="readme-images/stackedbar1.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
-<img src="readme-images/stackedbar2.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
-<img src="readme-images/stackedbar3.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
-<img src="readme-images/stackedbar4.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
+<img src="readme-images/stackedbar1.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar2.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar3.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar4.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
 
-<img src="readme-images/stackedbar5.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
-<img src="readme-images/stackedbar6.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
-<img src="readme-images/stackedbar7.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
-<img src="readme-images/stackedbar8.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
+<img src="readme-images/stackedbar5.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar6.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar7.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar8.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
