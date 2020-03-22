@@ -1,5 +1,9 @@
 # Data Visualization
 
+## Sumary
+
+1. [Histogram](#histogram)
+
 This repo is used to keep the practical exercicies made during the course of the subject Data Visualization of my Master Degree course in Computing. It consists in some applications to generate different kinds of charts. 
 
 This project uses the [D3.js](https://d3js.org) libraries to build the charts.
