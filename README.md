@@ -1,8 +1,9 @@
 # Data Visualization
 
-## Sumary
+## Summary
 
 1. [Histogram](#histogram)
+2. [Stacked Bars](#stacked-bars-chart)
 
 This repo is used to keep the practical exercicies made during the course of the subject Data Visualization of my Master Degree course in Computing. It consists in some applications to generate different kinds of charts. 
 
@@ -47,7 +48,7 @@ The histogram algorithm implemented here follows the next steps:
 
 <img src="readme-images/histogram1.png" alt="Image of a histogram chart generated with this lib." width="500px" height="500px"/>
 
-## Stacked Bar Chart
+## Stacked Bars Chart
 
 ### What is a histogram? 
 
@@ -55,11 +56,11 @@ It's a kind of chart that allows us to see the total values for different catego
 
 ### How is it generated?
 
-The histogram algorithm implemented here follows the next steps:
+The algorithm implemented here follows the next steps:
 
 1. Given a table in the format
 
-![Stacked bar chart data table exemplo.](readme-images/stackedbar_chart_example.png)
+![Stacked bars chart data table exemplo.](readme-images/stackedbar_chart_example.png)
 
    it is create a JSON object in the format
 
@@ -82,7 +83,7 @@ The histogram algorithm implemented here follows the next steps:
      - A list of color values separated by `;` to fill each group that composes the columns. **[ optional, default value = gray scale ]**
      - Press "Generate".
     
-### Exemples of stacked bar charts generated with the lib
+### Exemples of stacked bars charts generated with the lib
 
 <img src="readme-images/stackedbar1.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar2.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar3.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar4.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
 
