@@ -14,6 +14,13 @@ To use the library, follow the steps bellow:
 3. Open the index.html in your browser.
 4. Select the chart type you want and follow the specific steps for chosen type in the corresponding section of this document.
 
+# Summary
+
+1. [Histogram](#histogram)
+2. [Stacked Bars](#stacked-bars-chart)
+
+
+
 ## Histogram
 
 ### What is a histogram? 
@@ -35,15 +42,15 @@ The histogram algorithm implemented here follows the next steps:
 
  -  Enter with the data necessary to generate the chart.
      - The path to your CSV file.
-     - The position of the column that contains the values to generate the chart (it starts in 0).
-     - The width and the height.
+     - The position of the column that contains the values to generate the chart (it starts in 0). **[ optional, default value = 0 ]**
+     - The width and the height. **[ optional, default and minimum value = 500 ]**
      - Press "Generate".
     
-#### Exemple of a histogram chart generated with the lib
+### Exemple of a histogram chart generated with the lib
 
-![Image of a histogram chart generated with this lib.](readme-images/histogram1.png)
+<img src="readme-images/histogram1.png" alt="Image of a histogram chart generated with this lib." width="500px" height="500px"/>
 
-## Stacked Bar Chart
+## Stacked Bars Chart
 
 ### What is a histogram? 
 
@@ -51,22 +58,35 @@ It's a kind of chart that allows us to see the total values for different catego
 
 ### How is it generated?
 
-The histogram algorithm implemented here follows the next steps:
+The algorithm implemented here follows the next steps:
 
-1. Given a table in the format: ![Stacked bar chart data table exemplo.](readme-images/stackedbar_chart_example.png)
+1. Given a table in the format
+
+![Stacked bars chart data table exemplo.](readme-images/stackedbar_chart_example.png)
+
+   it is create a JSON object in the format
+
+ ```
+  { 'A': { 'Category A': 1, 'Category B': 2, 'Category C': 3, 'totalValue': 6 },
+    'B': { 'Category A': 4, 'Category B': 5, 'Category C': 6, 'totalValue': 15 },
+    'C': { 'Category A': 7, 'Category B': 8, 'Category C': 9, 'totalValue': 24 } }
+ ```  
+ 
+ 2. Using the JSON and the other settings (chart orientation and the chart type), the chart is plotted.
+
 
 ### How to use? 
 
+ -  Enter with the data necessary to generate the chart.
+     - The path to your CSV file.
+     - The chart orientation (horizontal or vertical).
+     - The chart type (commom or percentage).
+     - The width and the height. **[ optional, default and minimum value = 500 ]**
+     - A list of color values separated by `;` to fill each group that composes the columns. **[ optional, default value = gray scale ]**
+     - Press "Generate".
     
-#### Exemple of a histogram chart generated with the lib
+### Exemples of stacked bars charts generated with the lib
 
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar1.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar2.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar3.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar4.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar5.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar6.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar7.png)
-![Image of a stacked bar chart generated with this lib.](readme-images/stackedbar8.png)
+<img src="readme-images/stackedbar1.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar2.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar3.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar4.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
 
-
+<img src="readme-images/stackedbar5.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar6.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar7.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/><img src="readme-images/stackedbar8.png" alt="Image of a stacked bar chart generated with this lib." width="200px" height="200px"/>
