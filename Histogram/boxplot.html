@@ -17,7 +17,7 @@
 
         <script src = "./js/script.js"></script>
 
-        <script src = "./js/stackedbar.js"></script>
+        <script src = "./js/boxplot.js"></script>
 
         <style>
 
@@ -95,7 +95,7 @@
                 border-style: solid;
                 border-color: gray;
                 border-width: 1px;
-                
+
                 font-size: 18px;
             }
 
@@ -120,7 +120,7 @@
     <body>
 
         <header>
-            <h1> Stacked Bars </h1>
+            <h1> Box Plot </h1>
             <h3> Enter with the data to generate the chart. </h3>
         </header>
 
@@ -133,19 +133,16 @@
                     <input id="file" type="text" placeholder="ex: ./src/test.csv"/>
                 </label>
 
+                <label title="The CSV file column(s) containing numerical values (values start in 0 and mus be separeted by dot-comma)."> 
+                    <span> Column Positions: </span>
+                    <input id="columns" type="text" min="0" placeholder="Column Position (ex: 1;2;3)"/>
+                </label>
+
                 <label> 
                     <span> Chart Orientation: </span>
                     <select id="orientation">
                         <option value="horizontal_stackedbar_chart"> Horizontal </option>
                         <option value="vertical_stackedbar_chart"> Vertical </option>
-                    </select>
-                </label>
-                
-                <label> 
-                    <span> Chart Type: </span>
-                    <select id="type">
-                        <option value="common_stackedbar_chart"> Common </option>
-                        <option value="percentage_stackedbar_chart"> Percenttage </option>
                     </select>
                 </label>
 
@@ -159,12 +156,7 @@
                     <input id="height" type="number" min="500" placeholder="Column Height (min 500)"/>
                 </label>
 
-                <label title="The color values to apply to each column data section.">
-                    <span> Section colors: </span>
-                    <input id="colors" type="text" placeholder="ex: red;green;blue"/>
-                </label>
-
-                <button onclick="javascript:generateStackedbarChartButtonClick()"> Generate </button>
+                <button onclick="javascript:generateBloxplotChartButtonClick()"> Generate </button>
 
             </section>
 
@@ -172,21 +164,44 @@
        
         <script>
 
-            function generateStackedbarChartButtonClick() {
+            // drawBoxplotChartFromCSV('./src/test.csv', 500, 500, HORIZONTAL)
+            // drawBoxplotChartFromCSV('./src/test.csv', 500, 500, VERTICAL)
+
+            function generateBloxplotChartButtonClick() {
                 clearErrors()
 
                 var file = document.getElementById('file').value
-                var type = document.getElementById('type').value
+                var columns = document.getElementById('columns').value
                 var orientation = document.getElementById('orientation').value
                 var width = document.getElementById('width').value
                 var height = document.getElementById('height').value
-                var colors = document.getElementById('colors').value
-                // red;green;blue;purple;pink;orange;yellow;brown;gray;lightblue
+
+                if (columns.trim() != '') { 
+                    columns = columns.split(';') 
+                } else { 
+                    logAndAddError('The column positions must be numerical values from 0 to number of table columns minus 1. For exemplo: 0;1;2 .')
+                    return
+                }
+                var columnNumbers = []
+                columns.forEach(function(column){
+                    var columnAsNumber = Number(column)
+                    if (isNaN(columnAsNumber)) {
+                        logAndAddError('Invalid column value: ' + column + '.')
+                    } else {
+                        columnAsNumber = parseInt(columnAsNumber)
+                        columnNumbers.push(columnAsNumber)
+                    }
+                })
+
+                if (columnNumbers.length == 0) {
+                    logAndAddError('The column positions must be numerical values from 0 to number of table columns minus 1. For examplo: 0;1;2 .')
+                    return
+                }
+
                 if (width < 500) { width = 500 }
                 if (height < 500) { height = 500}
-                if (colors.trim() != '') { colors = colors.split(';') } else { colors = [] }
 
-                drawStackedbarChartFromCSV(file, type, width, height, orientation, colors)
+                drawBoxplotChartFromCSV(file, columns, orientation, width, height)
             }
 
         </script>
@@ -194,15 +209,3 @@
     </body>
 
 </html>
-
-<script>
-    // var barsLabels = [ 'A', 'B', 'C' ]
-    // var barSectionsLabels = [ 'Category A', 'Category B', 'Category C', 'Category D', 'Category E', 'Category F' ]
-    // var values = {  'A': { 'Category A': 1, 'Category B': 2, 'Category C': 3, 'Category D': 1, 'Category E': 2, 'Category F': 3 }, 
-    //                 'B': { 'Category A': 4, 'Category B': 5, 'Category C': 6, 'Category D': 1, 'Category E': 2, 'Category F': 3 }, 
-    //                 'C': { 'Category A': 7, 'Category B': 8, 'Category C': 9, 'Category D': 1, 'Category E': 2, 'Category F': 3 } }
-    // drawStackedbarChart('Stacked chart title', COMMON, 1000, 1000, HORIZONTAL, barsLabels, barSectionsLabels, values)
-    // drawStackedbarChart('Stacked chart title', COMMON, 500, 500, VERTICAL, barsLabels, barSectionsLabels, values)
-    // drawStackedbarChart('Stacked chart title', PERCENTAGE, 500, 500, HORIZONTAL, barsLabels, barSectionsLabels, values)
-    // drawStackedbarChart('Stacked chart title', PERCENTAGE, 500, 500, VERTICAL, barsLabels, barSectionsLabels, values)
-</script>

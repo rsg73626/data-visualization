@@ -20,7 +20,7 @@ var VERTICAL = 'vertical_stackedbar_chart'
  * @param {String} orientation HORIZONTAL or VERTICAL.
  * @param {Array} barsLabels An array of strings containing the label of each bar; ex: [ 'A', 'B', 'C' ].
  * @param {Array} barSectionsLabels An array of strings containing the label of each bar section; ex: [ 'Category A', 'Category B', 'Category C' ].
- * @param {Object} values An object containing the values to each column; ex: { 'A': { 'Category A': 5, 'Category B': 10, 'Category C': 15 }, ... }; it must contains an object to each bar label value, and each of these objects must contain a value to each bar section label.
+ * @param {Object} values An object containing the values to each column; ex: { 'A': { 'Category A': 5, 'Category B': 10, 'Category C': 15 }, ... }.
  */
 function drawStackedbarChart(title, type, chartAreaWidth, chartAreaHeight, orientation, barsLabels, barSectionsLabels, values, colors) {
 
@@ -44,7 +44,7 @@ function drawStackedbarChart(title, type, chartAreaWidth, chartAreaHeight, orien
         }
         return max
     })()
-    print(colors)
+    
     if (colors.length < barSectionsLabels.length) {
         for (i = 230; i >= 10; i -= (255 - 10)/barSectionsLabels.length) {
             colors.push('rgb(' + i + ', ' + i + ', ' + i + ')')

@@ -10,7 +10,7 @@ function logError(content) {
 function addError(content) {
     d3.select('body').append('h3')
                         .classed('error', true)
-                        .text('ERROR: ' + content)
+                        .text('ERROR: ' + content + '\n')
                         .style('margin', '0')
                         .style('padding', '0')
                         .style('font-family', 'Arial')
