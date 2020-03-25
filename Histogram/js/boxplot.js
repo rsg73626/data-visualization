@@ -228,7 +228,7 @@ function drawBoxplotChart(title, chartAreaWidth, chartAreaHeight, orientation, b
 
 }
 
-function drawBoxplotChartFromCSV(filePath, columns, orientation, width, height, orientation) {
+function drawBoxplotChartFromCSV(filePath, columns, orientation, width, height) {
 
     if (typeof filePath != 'string' || filePath.trim() == '') {
         logAndAddError('Invalid file path.')
