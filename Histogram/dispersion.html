@@ -17,7 +17,7 @@
 
         <script src = "./js/script.js"></script>
 
-        <script src = "./js/boxplot.js"></script>
+        <script src = "./js/dispersion.js"></script>
 
         <style>
 
@@ -120,7 +120,7 @@
     <body>
 
         <header>
-            <h1> Box Plot </h1>
+            <h1> Dispersion </h1>
             <h3> Enter with the data to generate the chart. </h3>
         </header>
 
@@ -133,17 +133,14 @@
                     <input id="file" type="text" placeholder="ex: ./src/test.csv"/>
                 </label>
 
-                <label title="The CSV file column(s) containing numerical values (values start in 0 and mus be separeted by dot-comma)."> 
-                    <span> Column Positions: </span>
-                    <input id="columns" type="text" min="0" placeholder="Column Position (ex: 1;2;3)"/>
+                <label title="The first column from CSV file containing numerical values."> 
+                    <span> Fist Column Positions: </span>
+                    <input id="column1" type="number" min="0" placeholder="Column Position (ex: 0)"/>
                 </label>
 
-                <label> 
-                    <span> Chart Orientation: </span>
-                    <select id="orientation">
-                        <option value="horizontal_stackedbar_chart"> Horizontal </option>
-                        <option value="vertical_stackedbar_chart"> Vertical </option>
-                    </select>
+                <label title="The second column from CSV file containing numerical values."> 
+                    <span> Second Column Positions: </span>
+                    <input id="column2" type="number" min="0" placeholder="Column Position (ex: 1)"/>
                 </label>
 
                 <label> 
@@ -156,7 +153,7 @@
                     <input id="height" type="number" min="500" placeholder="Column Height (min 500)"/>
                 </label>
 
-                <button onclick="javascript:generateBloxplotChartButtonClick()"> Generate </button>
+                <button onclick="javascript:generateDispersionChartButtonClick()"> Generate </button>
 
             </section>
 
@@ -164,41 +161,28 @@
        
         <script>
 
-            function generateBloxplotChartButtonClick() {
+            function generateDispersionChartButtonClick() {
                 clearErrors()
 
                 var file = document.getElementById('file').value
-                var columns = document.getElementById('columns').value
-                var orientation = document.getElementById('orientation').value
+                var c1 = document.getElementById('column1').value
+                var c2 = document.getElementById('column2').value
                 var width = document.getElementById('width').value
                 var height = document.getElementById('height').value
 
-                if (columns.trim() != '') { 
-                    columns = columns.split(';') 
-                } else { 
-                    logAndAddError('The column positions must be numerical values from 0 to number of table columns minus 1. For exemplo: 0;1;2 .')
-                    return
-                }
-                var columnNumbers = []
-                columns.forEach(function(column){
-                    var columnAsNumber = Number(column)
-                    if (isNaN(columnAsNumber)) {
-                        logAndAddError('Invalid column value: ' + column + '.')
-                    } else {
-                        columnAsNumber = parseInt(columnAsNumber)
-                        columnNumbers.push(columnAsNumber)
-                    }
-                })
+                c1 = Number(c1)
+                c2 = Number(c2)
 
-                if (columnNumbers.length == 0) {
-                    logAndAddError('The column positions must be numerical values from 0 to number of table columns minus 1. For examplo: 0;1;2 .')
+                if (isNaN(c1) || isNaN(c2)) {
+                    logAndAddError('The column positions must be numerical values from 0 to number of table columns minus 1. For exemplo: 0.')
                     return
                 }
 
                 if (width < 500) { width = 500 }
                 if (height < 500) { height = 500}
+
+                drawDispersionChartFromCSV(file, width, height, c1, c2)
                 
-                drawBoxplotChartFromCSV(file, columns, orientation, width, height)
             }
 
         </script>
