@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        
+        <title> DV - Histogram </title>
+        
+        <script src = "./js/d3/d3.min.js"></script>
+
+        <script src = "./js/d3/d3-transform.min.js"></script>
+
+        <script src = "./js/d3/d3-axis.min.js"></script>
+
+        <script src = "./js/d3/d3-fetch.min.js"></script>
+
+        <script src = "./js/script.js"></script>
+
+        <script src = "./js/chart/histogram.js"></script>
+
+        <link rel="stylesheet" href="./css/style.css"/>
+
+    </head>
+
+    <body>
+
+        <header>
+            <h1> Histogram </h1>
+            <h3> Enter with the data to generate the chart. </h3>
+        </header>
+
+        <main>
+
+            <section id="inputs">
+
+                <label> 
+                    <span> CSV File Path: </span>    
+                    <input id="file" type="text" placeholder="ex: ./src/test.csv"/>
+                </label>
+
+                <label title="The CSV file column containing numerical values."> 
+                    <span> Column Position: </span>
+                    <input id="column" type="number" min="0" placeholder="Column Position"/>
+                </label>
+
+                <label> 
+                    <span> Chart Width:  </span>
+                    <input id="width" type="number" min="500" placeholder="Chart Width (min 500)"/>
+                </label>
+                
+                <label> 
+                    <span> Chart Height: </span>
+                    <input id="height" type="number" min="500" placeholder="Column Height (min 500)"/>
+                </label>
+
+                <button onclick="javascript:generateHistogramChartButtonClick()"> Generate </button>
+
+            </section>
+
+        </main>
+
+        <section id="charts">
+
+        </section>
+       
+        <script>
+
+            function generateHistogramChartButtonClick() {
+                clearErrors()
+
+                var file = document.getElementById('file').value
+                var column = document.getElementById('column').value
+                var width = document.getElementById('width').value
+                var height = document.getElementById('height').value
+
+                if (width < 500) { width = 500 }
+                if (height < 500) { height = 500}
+
+                drawHistogramChartFromCSV(file, column, width, height)
+            }
+
+        </script>
+
+    </body>
+
+</html>

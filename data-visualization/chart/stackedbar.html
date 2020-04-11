@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        
+        <title> DV - Stacked Bars </title>
+        
+        <script src = "./js/d3/d3.min.js"></script>
+
+        <script src = "./js/d3/d3-transform.min.js"></script>
+
+        <script src = "./js/d3/d3-axis.min.js"></script>
+
+        <script src = "./js/d3/d3-fetch.min.js"></script>
+
+        <script src = "./js/script.js"></script>
+
+        <script src = "./js/chart/stackedbar.js"></script>
+
+        <link rel="stylesheet" href="./css/style.css"/>
+
+    </head>
+
+    <body>
+
+        <header>
+            <h1> Stacked Bars </h1>
+            <h3> Enter with the data to generate the chart. </h3>
+        </header>
+
+        <main>
+
+            <section id="inputs">
+
+                <label> 
+                    <span> CSV File Path: </span>    
+                    <input id="file" type="text" placeholder="ex: ./src/test.csv"/>
+                </label>
+
+                <label> 
+                    <span> Chart Orientation: </span>
+                    <select id="orientation">
+                        <option value="horizontal_stackedbar_chart"> Horizontal </option>
+                        <option value="vertical_stackedbar_chart"> Vertical </option>
+                    </select>
+                </label>
+                
+                <label> 
+                    <span> Chart Type: </span>
+                    <select id="type">
+                        <option value="common_stackedbar_chart"> Common </option>
+                        <option value="percentage_stackedbar_chart"> Percenttage </option>
+                    </select>
+                </label>
+
+                <label> 
+                    <span> Chart Width:  </span>
+                    <input id="width" type="number" min="500" placeholder="Chart Width (min 500)"/>
+                </label>
+                
+                <label> 
+                    <span> Chart Height: </span>
+                    <input id="height" type="number" min="500" placeholder="Column Height (min 500)"/>
+                </label>
+
+                <label title="The color values to apply to each column data section.">
+                    <span> Section colors: </span>
+                    <input id="colors" type="text" placeholder="ex: red;green;blue"/>
+                </label>
+
+                <button onclick="javascript:generateStackedbarChartButtonClick()"> Generate </button>
+
+            </section>
+
+        </main>
+
+        <section id="charts">
+
+        </section>
+       
+        <script>
+
+            function generateStackedbarChartButtonClick() {
+                clearErrors()
+
+                var file = document.getElementById('file').value
+                var type = document.getElementById('type').value
+                var orientation = document.getElementById('orientation').value
+                var width = document.getElementById('width').value
+                var height = document.getElementById('height').value
+                var colors = document.getElementById('colors').value
+                // red;green;blue;purple;pink;orange;yellow;brown;gray;lightblue
+                if (width < 500) { width = 500 }
+                if (height < 500) { height = 500}
+                if (colors.trim() != '') { colors = colors.split(';') } else { colors = [] }
+
+                drawStackedbarChartFromCSV(file, type, width, height, orientation, colors)
+            }
+
+        </script>
+
+    </body>
+
+</html>
+
+<script>
+    // var barsLabels = [ 'A', 'B', 'C' ]
+    // var barSectionsLabels = [ 'Category A', 'Category B', 'Category C', 'Category D', 'Category E', 'Category F' ]
+    // var values = {  'A': { 'Category A': 1, 'Category B': 2, 'Category C': 3, 'Category D': 1, 'Category E': 2, 'Category F': 3 }, 
+    //                 'B': { 'Category A': 4, 'Category B': 5, 'Category C': 6, 'Category D': 1, 'Category E': 2, 'Category F': 3 }, 
+    //                 'C': { 'Category A': 7, 'Category B': 8, 'Category C': 9, 'Category D': 1, 'Category E': 2, 'Category F': 3 } }
+    // drawStackedbarChart('Stacked chart title', COMMON, 1000, 1000, HORIZONTAL, barsLabels, barSectionsLabels, values)
+    // drawStackedbarChart('Stacked chart title', COMMON, 500, 500, VERTICAL, barsLabels, barSectionsLabels, values)
+    // drawStackedbarChart('Stacked chart title', PERCENTAGE, 500, 500, HORIZONTAL, barsLabels, barSectionsLabels, values)
+    // drawStackedbarChart('Stacked chart title', PERCENTAGE, 500, 500, VERTICAL, barsLabels, barSectionsLabels, values)
+</script>
