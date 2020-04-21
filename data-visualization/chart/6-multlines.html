@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        
+        <title> DV - Histogram </title>
+        
+        <script src = "./js/d3/d3.min.js"></script>
+
+        <script src = "./js/d3/d3-transform.min.js"></script>
+
+        <script src = "./js/d3/d3-axis.min.js"></script>
+
+        <script src = "./js/d3/d3-fetch.min.js"></script>
+
+        <script src = "./js/script.js"></script>
+
+        <script src = "./js/chart/6-multlines.js"></script>
+
+        <link rel="stylesheet" href="./css/style.css"/>
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <nav w3-include-html="../../menu/menu.html"></nav> 
+
+            <h1> Multiple Lines </h1>
+            <h3> Enter with the data to generate the chart. </h3>
+
+        </header>
+
+        <main>
+
+            <section id="inputs">
+
+                <label> 
+                    <span> CSV File Path: </span>    
+                    <input id="file" type="text" placeholder="ex: ./src/test.csv"/>
+                </label>
+
+                <label> 
+                    <span> Chart Width:  </span>
+                    <input id="width" type="number" min="500" placeholder="Chart Width (min 500)"/>
+                </label>
+                
+                <label> 
+                    <span> Chart Height: </span>
+                    <input id="height" type="number" min="500" placeholder="Column Height (min 500)"/>
+                </label>
+
+                <label title="The color values to apply to each line.">
+                    <span> Line colors: </span>
+                    <input id="colors" type="text" placeholder="ex: red;green;blue"/>
+                </label>
+
+                <button onclick="javascript:generateMultlinesChartButtonClick()"> Generate </button>
+
+            </section>
+
+        </main>
+
+        <section id="charts">
+
+        </section>
+       
+        <script>
+
+            function generateMultlinesChartButtonClick() {
+                clearErrors()
+
+                var file = document.getElementById('file').value
+                var width = document.getElementById('width').value
+                var height = document.getElementById('height').value
+                var colors = document.getElementById('colors').value
+                // red;green;blue;purple;pink;orange;yellow;brown;gray;lightblue
+                if (width < 500) { width = 500 }
+                if (height < 500) { height = 500}
+                if (colors.trim() != '') { colors = colors.split(';') } else { colors = [] }
+                
+                drawMultlinesChartFromCSV(file, width, height, colors)
+            }
+
+        </script>
+
+        <script> createNavigationMenu(null, '../../') </script>
+
+    </body>
+
+</html>

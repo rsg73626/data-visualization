@@ -7,48 +7,9 @@
         
         <title> Data Visualization </title>
 
-        <style>
+        <script src = "./chart/js/script.js"></script>
 
-            * {
-                margin: 0;
-                padding: 0;
-            }
-
-            html {
-                width: 100%;
-                height: 100%;
-            }
-
-            body {
-                width: 100%;
-                height: 100%;
-
-                font-family: "Arial";
-            }
-
-            body header {
-                width: 100%;
-                height: 20%;
-
-                margin: auto;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                align-items: center;
-            }
-
-            body main {
-                width: 100%;
-                height: 80%;
-
-                margin: auto;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                align-items: center;
-            }
-
-        </style>
+        <link rel="stylesheet" href="./chart/css/style.css"/>
 
     </head>
 
@@ -56,29 +17,24 @@
 
         <header>
 
-            <h1> Data Visualization </h1>
+            <nav w3-include-html="./menu/menu.html"></nav> 
 
-            <h3> Select a Chart Type </h3>
+            <h1> Data Visualization </h1>
 
         </header>
 
         <main>
 
-            <a href="./chart/histogram.html"> Histogram </a>
-
-            <a href="./chart/stackedbar.html"> Stacked Bar </a>
-
-            <a href="./chart/boxplot.html"> Box Plot </a>
-
-            <a href="./chart/dispersion.html"> Dispersion </a>
-
-            <a href="./chart/radar.html"> Radar </a>
-
-            <a href="./chart/multlines.html"> Multiple Lines </a>
-
-            <a href="./chart/cloropleth.html"> Cloropleth </a>
+            <p style="text-align: center; width: 500px; font-size: 24px; line-height: 40px;">
+                This project is used to keep the practical exercicies made during the course of the subject Data Visualization of my Master Degree course in Computing. 
+                It consists in some applications to generate different kinds of charts.
+            </p>
 
         </main>
+
+        <script> 
+            createNavigationMenu('chart/')
+        </script>
 
     </body>
 

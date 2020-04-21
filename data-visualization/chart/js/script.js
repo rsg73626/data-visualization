@@ -42,23 +42,101 @@ function getCoordenate(x0, y0, length, angle) {
     return { x: x1, y: y1 }
 }
 
-// var c = availableSize * 1.5 
-//     var n = 8 
-//     var sector = 360 / n 
-//     var x0 = chartAreaSize / 2 
-//     var y0 = x0 
+function includeHTML(completion = null) {
+    var z, i, elmnt, file, xhttp
+    /*loop through a collection of all HTML elements:*/
+    z = document.getElementsByTagName("*")
+    for (i = 0; i < z.length; i++) {
+      elmnt = z[i]
+      /*search for elements with a certain atrribute:*/
+      file = elmnt.getAttribute("w3-include-html")
+      if (file) {
+        /*make an HTTP request using the attribute value as the file name:*/
+        xhttp = new XMLHttpRequest()
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4) {
+            if (this.status == 200) {
+                elmnt.innerHTML = this.responseText
+                if ((typeof completion) == 'function') {
+                    completion()
+                }
+            }
+            if (this.status == 404) {elmnt.innerHTML = "Page not found."}
+            /*remove the attribute, and call this function once more:*/
+            elmnt.removeAttribute("w3-include-html")
+            includeHTML()
+          }
+        }      
+        xhttp.open("GET", file, true)
+        xhttp.send()
+        /*exit the function:*/
+        return
+      }
+    }
 
-//     var circleRadius = 0
+    /*
+    <div w3-include-html="content.html"></div> 
+    <script> includeHTML() </script>
+    */
 
-//     for (i = 1; i <= n; i++) {
-//         var alpha = sector * i
-//         var sinAlpha = toDegrees(Math.sin(toRadians(alpha)))
-//         var cosAlpha = toDegrees(Math.cos(toRadians(alpha)))
-//         var x1 = (c * (cosAlpha / 180)) + x0
-//         var y1 = (c * (sinAlpha / 180)) + y0
+}
 
-//         if (i == 1) { 
-//             var deltaX = x1 - x0
-//             var deltaY = y1 - y0
-//             circleRadius = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY))
-//         }
+var _relativeMenuLinkPath = ''
+var _homeRelativeMenuLinkPath = ''
+
+function adjustMenuLinkPaths() {
+    var menuLinks = document.getElementsByClassName('menu-link')
+    for (i = 0; i < menuLinks.length; i++) { 
+        var menuLink = menuLinks[i]
+        menuLink.href = menuLink.href.replace('relativePath', _relativeMenuLinkPath)
+    }
+    var homeMenuLinks = document.getElementById('menu-home-link')
+    homeMenuLinks.href = homeMenuLinks.href.replace('homeRelativePath', _homeRelativeMenuLinkPath)
+}
+
+function createNavigationMenu(relativeMenuLinkPath = null, homeRelativeMenuLinkPath = null) {
+    if ((typeof relativeMenuLinkPath) == 'string' && relativeMenuLinkPath.trim().length > 0) {
+        _relativeMenuLinkPath = relativeMenuLinkPath
+    }
+    if ((typeof homeRelativeMenuLinkPath) == 'string' && homeRelativeMenuLinkPath.trim().length > 0) {
+        _homeRelativeMenuLinkPath = homeRelativeMenuLinkPath
+    }
+    includeHTML(adjustMenuLinkPaths)
+}
+
+function tryToCreateColorObjectFromValue(value) {
+
+    var color = { r: 100, g: 100, b: 100, a: 1 }
+
+    if ((typeof value) == 'string' && value.trim() != '') {
+
+        valueSplit = value.trim().split(';') 
+
+        if (valueSplit.length == 3) {
+
+            var colorValues = []
+
+            valueSplit.forEach(function(v){
+                var value = Number(v)
+                if (!isNaN(value) && value >= 0 && value <= 255) {
+                    colorValues.push(value)
+                }
+            })
+
+            if (colorValues.length == 3) {
+                color.r = colorValues[0]
+                color.g = colorValues[1]
+                color.b = colorValues[2]
+            } 
+
+        } 
+
+    }
+
+    return color
+
+}
+
+function rgbFromColorObject(colorObject) {
+    return 'rgba(' + colorObject.r + ', ' + colorObject.g + ', ' + colorObject.b + ', ' + colorObject.a + ')'
+}
