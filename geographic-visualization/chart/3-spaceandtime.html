@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+
+<html lang = "en">
+
+    <head>
+
+        <meta charset = "UTF-8">
+        
+        <title> DV - Space and Time </title>
+
+        <script src="./js/map/d3.v3.mim.js"></script>
+        <script src="./js/map/queue.v1.min.js"></script>
+        <script src="./js/map/topojson.v1.min.js"></script>
+
+        <!-- <script src = "./js/d3/d3.min.js"></script> -->
+        <!-- <script src = "./js/d3/d3-fetch.min.js"></script> -->
+
+        <script src = "./js/script.js"></script>
+        <script src = "./js/chart/1-cloropleth.js"></script>
+        <script src = "./js/chart/3-spaceandtime.js"></script>
+
+        <link rel="stylesheet" href="./css/style.css"/>
+
+        <style>
+
+            .states {
+                stroke: rgb(5,5,5);
+                stroke-width: 0.5;
+                stroke-linejoin: round;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <header>
+
+            <nav w3-include-html="../menu/menu.html"></nav> 
+
+            <h1> Space and Time </h1>
+
+        </header>
+
+        <main>
+
+            <section id="inputs">
+
+                <label> 
+                    <span> Title: </span>    
+                    <input id="title" type="text" placeholder="Chart title" value="IBGE: População Estimada do Brasil entre 1995 e 2019"/>
+                </label>
+
+                <label title="The CSV file to compose the visualization."> 
+                    <span> CSV File Path: </span>
+                    <input id="file" type="text" placeholder="ex: data.csv" value="./src/estimated-brazil-population/1995-2019.csv"/>
+                </label>
+
+                <label> 
+                    <span> Chart Size:  </span>
+                    <input id="size" type="number" min="500" placeholder="Chart Size (min 500)"/>
+                </label>
+
+                <label title="The RGB color to create the color scale."> 
+                    <span> Color: </span> 
+                    <input id="color" type="text" placeholder="ex: 100;100;100" value="9;148;65"/>
+                    <!-- 150;10;50 -->
+                </label>
+
+                <button onclick="javascript:generateSpaceAndTimeVisualizationButtonClick()"> Generate </button>
+
+            </section>
+
+        </main>
+
+        <section id="charts">
+
+        </section>
+
+        <script>
+
+            function generateSpaceAndTimeVisualizationButtonClick() {
+                
+                var title  = document.getElementById('title').value
+                var file   = document.getElementById('file').value
+                var size = document.getElementById('size').value
+                var color  = document.getElementById('color').value
+
+                if (size < 500) { size = 500 }
+
+                drawSpaceAndTimeVisualizationFromCSV(title, file, size, color)
+
+            }
+
+        </script>
+
+        <script> createNavigationMenu(null, '../') </script>
+
+    </body>
+
+</html>
