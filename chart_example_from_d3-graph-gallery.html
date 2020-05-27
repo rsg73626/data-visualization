@@ -1,0 +1,161 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <meta charset="utf-8">
+
+        <!-- Load d3.js -->
+        <script src="https://d3js.org/d3.v4.js"></script>
+
+        <style>
+
+            body {
+                font-family: "Arial";
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <h2> Casos Acumulados de Coronavírus no Brasil em 29/04/2010 (Ministério da Saúde) </h2>
+
+        <!-- Create a div where the graph will take place -->
+        <div id="my_dataviz"></div>
+
+        <script>
+
+            // set the dimensions and margins of the graph
+            var chartSize = 700
+            var margin = { top: 10, right: 10, bottom: 10, left: 10 }
+            var width  = chartSize - margin.left - margin.right
+            var height = chartSize - margin.top - margin.bottom
+
+            // append the svg object to the body of the page
+            var svg = d3.select("#my_dataviz")
+                            .append("svg")
+                                .attr("width", width + margin.left + margin.right)
+                                .attr("height", height + margin.top + margin.bottom)
+                                .append("g")
+                                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
+            // Read data
+            var fileName = './casos_acumulados_29_abr_2020.csv'
+            // var fileName = './data_hierarchy.csv'
+            d3.csv(fileName, function(data) {
+
+                // var regions = ['Norte', 'Nordeste', 'Sudeste', 'Sul', 'Centro-Oeste']
+                // var regions = ['Nordeste', 'Norte', 'Sudeste', 'Sul', 'Centro-Oeste']
+                // var regions = ['Nordeste', 'Sudeste', 'Norte', 'Sul', 'Centro-Oeste']
+                // var regions = ['Nordeste', 'Centro-Oeste', 'Sudeste', 'Norte', 'Sul']
+                // var regions = ['Nordeste', 'Centro-Oeste', 'Sul', 'Sudeste', 'Norte']
+                // var regions = ['Nordeste', 'Centro-Oeste', 'Sul', 'Norte', 'Sudeste']
+                var regions = ['Nordeste', 'Sul', 'Norte', 'Centro-Oeste', 'Sudeste']
+
+                var orderedData = [ data[0] ]
+
+                regions.forEach(function(region, i) {
+                    var states = data.filter(d=>d.region == region).sort((a,b)=>a.value-b.value)
+                    orderedData = orderedData.concat(states)
+                })
+
+                // stratify the data: reformatting for d3.js
+                var root = d3.stratify()
+                                .id(function(d) { return d.name })   // Name of the entity (column name is name in csv)
+                                .parentId(function(d) { return d.parent })   // Name of the parent (column name is parent in csv)
+                                (orderedData)
+                
+                root.sum(function(d) { return +d.value })   // Compute the numeric value for each entity
+
+                // Then d3.treemap computes the position of each element of the hierarchy
+                // The coordinates are added to the root object above
+                d3.treemap()
+                    .size([width, height])
+                    .padding(4)
+                    (root)
+                
+                // use this information to add rectangles:
+                svg.selectAll("rect")
+                        .data(root.leaves())
+                            .enter()
+                                .append("rect")
+                                    .attr('x', function (d) { return d.x0 })
+                                    .attr('y', function (d) { return d.y0 })
+                                    .attr('width', function (d) { return d.x1 - d.x0 })
+                                    .attr('height', function (d) { return d.y1 - d.y0 })
+                                    .style("stroke", "black")
+                                    .attr('id', (d=>d.data.name))
+                                    .attr('title', (d=>d.data.name + ': ' + d.data.value))
+
+                // and to add the text labels
+                svg.selectAll("text")
+                        .data(root.leaves())
+                            .enter()
+                                .append("text")
+                                .attr("x", function(d){ return d.x0+3})    // +10 to adjust position (more right)
+                                .attr("y", function(d){ return d.y0+15})    // +20 to adjust position (lower)
+                                .text(function(d){ return d.data.name})
+                                .attr("font-size", "15px")
+                                .attr("fill", "black")
+                
+                var colors = [ { r: 51,  g: 111, b: 27 },  
+                               { r: 247, g: 149, b: 22 },
+                               { r: 253, g: 221, b: 48 },
+                               { r: 171, g: 203, b: 45 },
+                               { r: 0,   g: 152,  b: 205 } ]
+                
+                regions.forEach(function(region, i) {
+
+                    var states = orderedData.filter(d=>d.region == region)
+                    var color = colors[i]
+
+                    states.forEach(function(state, j) {
+                        d3.select('#' + state.name)
+                            .attr('fill', 'rgb(' + color.r + ', ' + color.g + ', ' + color.b + ')')
+                            // .attr('fill', 'rgba(' + color.r + ', ' + color.g + ', ' + color.b + ', ' + ((1/states.length) * (j + 1)) + ')')
+                        
+                    })
+
+                })
+
+
+                var legendRowWidth = 200
+                var legendRowHeight = height  / regions.length
+                var colorSize = legendRowHeight <= 50 ? legendRowHeight * 0.8 : 50
+
+                var svg2 = d3.select("#my_dataviz").append('svg')
+                                                    .attr('width', legendRowWidth)
+                                                    .attr('height', height)
+
+                regions.forEach(function(label,i) {
+                    var group = svg2.append('g').attr('transform', 'translate(0,' + (i * legendRowHeight) + ')')
+                    var color = group.append('rect')
+                                        .attr('x', 10)
+                                        .attr('y', (legendRowHeight * 0.5) - (colorSize * 0.5))
+                                        .attr('width', colorSize)
+                                        .attr('height', colorSize)
+                                        .attr('fill', 'rgb(' + colors[i].r + ', ' + colors[i].g + ', ' + colors[i].b + ')')
+                        
+                    group.append('text')
+                            .attr('x', colorSize + 20)
+                            .attr('y', legendRowHeight * 0.5)
+                            .text(label)
+                            
+                })
+                
+            })
+
+        </script>
+
+    </body>
+
+</html>

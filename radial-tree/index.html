@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        
+        <title> DV - Radar </title>
+        
+        <script src = "./d3/d3.min.js"></script>
+
+        <script src = "./d3/d3-transform.min.js"></script>
+
+        <script src = "./d3/d3-axis.min.js"></script>
+
+        <script src = "./d3/d3-fetch.min.js"></script>
+
+        <script src = "./script.js"></script>
+
+        <style>
+
+            body {
+                width: 100%;
+                height: 100%;
+                
+                font-family: "Arial";
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                background-color: #212930;
+            }
+
+            body #chartarea {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            body h2 {
+                color: white;
+            }
+
+
+
+            /*
+    inputs['Region']                = { color: 'white', width: 1 }
+    inputs['State']                 = { color: 'white', width: 1 }
+    inputs['New Cases']             = { color: '#FFD500', width: 3 } 
+    inputs['Acumulated New Cases']  = { color: '#FF8106', width: 3 }
+    inputs['New Deaths']            = { color: '#FE7F9C', width: 3 }
+    inputs['Acumulated New Deaths'] = { color: '#ED2939', width: 3 }
+
+    nodes['Country']               = { color: '#212930', strokeColor: '#795548', strokeWidth: 2, textColor: '#795548' }
+    nodes['Region']                = { color: '#212930', strokeColor: 'lightpink', strokeWidth: 2, textColor: 'lightpink' }
+    nodes['State']                 = { color: '#212930', strokeColor: 'lightgreen', strokeWidth: 2, textColor: 'lightgreen' }
+    nodes['New Cases']             = { color: 'lightblue' } 
+    nodes['Acumulated New Cases']  = { color: 'lightblue' }
+    nodes['New Deaths']            = { color: 'lightblue' }
+    nodes['Acumulated New Deaths'] = { color: 'lightblue' }
+    */
+            .node-root {
+                fill: #212930;
+                stroke: #795548;
+                stroke-width: 2;
+            }
+
+            .text-root {
+                fill: #795548;
+                font: bold;
+            }
+
+
+
+            .line-region {
+                fill: white;
+            }
+
+            .node-region {
+                fill: #212930;
+                stroke: lightpink;
+                stroke-width: 2;
+            }
+
+            .text-region {
+                fill: lightpink;
+                font-weight: bold;
+            }
+
+
+
+            .line-state {
+                fill: white;
+            }
+
+            .node-state {
+                fill: #212930;
+                stroke: lightgreen;
+                stroke-width: 2;
+            }
+
+            .text-state {
+                fill: lightgreen;
+                font-weight: bold;
+            } 
+
+
+
+            .line-population {
+                fill: white;
+            }
+
+            .node-population {
+                fill: #212930;
+                stroke: #FFD500;
+                stroke-width: 2;
+            }
+
+            .text-population {
+                fill: #FFD500;
+                font-weight: bold;
+            } 
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <h2> População Estimada do Brasil em 2019 (IBGE) </h2>
+
+        <main id="chartarea">
+
+        </main>
+
+        <script src = "./radial-tree.js"></script>
+
+    </body>
+
+</html>
