@@ -1,0 +1,33 @@
+.name "Bolo de Chocolate"
+.type PN
+
+.places
+Açúcar
+Chocolate
+Ovo
+Agua
+Óleo
+Fermento
+Trigo
+Gema
+Clara
+Clarineve
+MassaEsperando
+BoloPronto
+ÁguaQuente
+
+.transitions
+separando
+batendo
+Adicionando
+Assando
+Esquentando
+
+.flows
+separando: {1*Ovo} -> {1*Clara, 1*Gema}
+batendo: {1*Clara} -> {1*Clarineve}
+Adicionando: {1*Gema, 1*Chocolate, 1*Açúcar, 1*Trigo, 1*Óleo, 1*Fermento, 1*Clarineve, 1*ÁguaQuente} -> {1*MassaEsperando}
+Assando: {1*MassaEsperando} -> {1*BoloPronto}
+Esquentando: {1*Agua} -> {1*ÁguaQuente}
+
+.initial_marking {1*Açúcar, 1*Chocolate, 1*Ovo, 1*Óleo, 1*Fermento, 1*Trigo}
