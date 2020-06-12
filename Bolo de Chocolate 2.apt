@@ -1,0 +1,42 @@
+.name "Sample Net"
+.type PN
+
+.places
+Ovo
+Açúcar
+Chocolate
+Óleo
+Trigo
+Água
+clara
+gema
+ClaraEmNeve
+ÁguaQuente
+Mistura1
+Mistura2
+BoloPronto
+MassaPronta
+Fermento
+Mistura3
+
+.transitions
+separando
+batendo
+esquentando
+misturando
+adicionando
+t17
+adicionando
+assando
+
+.flows
+separando: {1*Ovo} -> {1*clara, 1*gema}
+batendo: {1*clara} -> {1*ClaraEmNeve}
+esquentando: {1*Água} -> {1*ÁguaQuente}
+misturando: {1*Açúcar, 1*Chocolate, 1*Óleo, 1*gema} -> {1*Mistura1}
+adicionando: {1*Mistura1, 1*Trigo, 1*ÁguaQuente} -> {1*Mistura2}
+t17: {1*ClaraEmNeve, 1*Mistura2} -> {1*Mistura3}
+adicionando: {1*Mistura3, 1*Fermento} -> {1*MassaPronta}
+assando: {1*MassaPronta} -> {1*BoloPronto}
+
+.initial_marking {1*BoloPronto}
